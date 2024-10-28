@@ -1,11 +1,21 @@
 function DisplayMain({ imgData }) {
   return (
     <div className="displayContainer">
-      {imgData.map((pokemon, index) => (
-        <div className="pokemonItem" key={index}>
-          <img src={pokemon} alt="pokemon sprite" />
-        </div>
-      ))}
+      {imgData.map((pokemon) => {
+        //split the "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+        //into array seperated by /
+        const urlArray = pokemon.split("/");
+        //get the last part (only unique component)
+        const idsplitter = urlArray[urlArray.length - 1];
+        //get the id only [2, png]
+        const id = idsplitter.split(".")[0];
+
+        return (
+          <div className="pokemonItem" key={id}>
+            <img src={pokemon} alt={`Pokemon sprite`} />
+          </div>
+        );
+      })}
     </div>
   );
 }
