@@ -6,6 +6,27 @@ import DisplayMain from "./childcomponents/DisplayMain";
 function MainParent() {
   const [imgData, setimgData] = useState([]);
 
+  const [clickedPokes, setclickedPokes] = useState([]);
+
+  const [highscore, sethighscore] = useState([0]);
+
+  function handleClick(pokemon) {
+    gameScoring(pokemon);
+    shuffleimgs();
+  }
+
+  function gameScoring(pokemon) {
+    console.log(clickedPokes);
+    if (clickedPokes.includes(pokemon)) {
+      setclickedPokes([]);
+    } else {
+      if (clickedPokes.length > highscore) {
+        sethighscore(clickedPokes.length);
+      }
+      setclickedPokes([...clickedPokes, pokemon]);
+    }
+  }
+
   function shuffleimgs() {
     //shuffling algorithm
     const shuffledData = [...imgData];
@@ -23,7 +44,14 @@ function MainParent() {
 
   return (
     <div className="main">
-      <DisplayMain imgData={imgData} shuffleimgs={shuffleimgs} />
+      <p>
+        Highscore:{highscore} Current Score:{clickedPokes.length}
+      </p>
+      <DisplayMain
+        imgData={imgData}
+        setclickedPokes={setclickedPokes}
+        handleClick={handleClick}
+      />
     </div>
   );
 }
