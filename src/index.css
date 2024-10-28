@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.appHeader {
+  display: flex;
+  justify-content: center;
+}
+
 .displayContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

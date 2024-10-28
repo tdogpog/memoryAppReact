@@ -1,4 +1,4 @@
-function DisplayMain({ imgData }) {
+function DisplayMain({ imgData, shuffleimgs }) {
   return (
     <div className="displayContainer">
       {imgData.map((pokemon) => {
@@ -11,7 +11,7 @@ function DisplayMain({ imgData }) {
         const id = idsplitter.split(".")[0];
 
         return (
-          <div className="pokemonItem" key={id}>
+          <div className="pokemonItem" key={id} onClick={shuffleimgs}>
             <img src={pokemon} alt={`Pokemon sprite`} />
           </div>
         );
