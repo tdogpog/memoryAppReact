@@ -16,7 +16,6 @@ function MainParent() {
   }
 
   function gameScoring(pokemon) {
-    console.log(clickedPokes);
     if (clickedPokes.includes(pokemon)) {
       setclickedPokes([]);
     } else {
